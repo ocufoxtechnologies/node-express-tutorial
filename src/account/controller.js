@@ -1,30 +1,23 @@
-const Account = require("../models/account");
+import Account, { findById, find, findByIdAndUpdate } from "../models/account";
 
-const createNewAccount = async account => {
+export const createNewAccount = async account => {
   const newAccount = new Account(account);
   let createdAccount = await newAccount.save();
   return createdAccount.populate("customer").execPopulate();
 };
 
-const getAccountById = id => {
-  return Account.findById(id).populate("customer");
+export const getAccountById = id => {
+  return findById(id).populate("customer");
 };
 
-const getAccounts = () => {
-  return Account.find().populate("customer");
+export const getAccounts = () => {
+  return find().populate("customer");
 };
 
-const updateBalance = (id, amount) => {
-  return Account.findByIdAndUpdate(id, {
+export const updateBalance = (id, amount) => {
+  return findByIdAndUpdate(id, {
     $inc: {
       balance: amount
     }
   });
-};
-
-module.exports = {
-  createNewAccount: createNewAccount,
-  getAccountById: getAccountById,
-  getAccounts: getAccounts,
-  updateBalance: updateBalance
 };
