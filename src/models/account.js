@@ -1,6 +1,6 @@
 import { model, Schema } from "mongoose";
 
-const accountSchema = Schema({
+export const accountSchema = Schema({
   type: {
     type: String,
     required: true,

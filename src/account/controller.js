@@ -1,4 +1,4 @@
-import Account, { findById, find, findByIdAndUpdate } from "../models/account";
+import Account from "../models/account";
 
 export const createNewAccount = async account => {
   const newAccount = new Account(account);
@@ -7,15 +7,15 @@ export const createNewAccount = async account => {
 };
 
 export const getAccountById = id => {
-  return findById(id).populate("customer");
+  return Account.findById(id).populate("customer");
 };
 
 export const getAccounts = () => {
-  return find().populate("customer");
+  return Account.find().populate("customer");
 };
 
 export const updateBalance = (id, amount) => {
-  return findByIdAndUpdate(id, {
+  return Account.findByIdAndUpdate(id, {
     $inc: {
       balance: amount
     }
