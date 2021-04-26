@@ -22,7 +22,7 @@ app.use("/account", accountRouter);
 app.use("/transaction", transactionRouter);
 
 connect(
-  "mongodb+srv://root:root@cluster0-rhzvb.mongodb.net/test?retryWrites=true&w=majority",
+  "DATABASE CONNECTION STRING",
   {
     useNewUrlParser: true,
     useCreateIndex: true,
